@@ -11,6 +11,8 @@
 |
 */
 
+use App\Posts;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,3 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('posts/{post}', [
+    'as' => 'posts.show',
+    'uses' => 'PostController@show'
+])->where('post','\d+');

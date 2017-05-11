@@ -13,7 +13,7 @@ trait CreatesApplication
      */
     public function createApplication()
     {
-        putenv('DB_CONNECTION=mysql_tests');
+        //putenv('DB_CONNECTION=mysql_tests');
 
         $app = require __DIR__.'/../bootstrap/app.php';
 

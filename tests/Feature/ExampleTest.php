@@ -3,13 +3,15 @@
 namespace Tests\Feature;
 
 use App\User;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\DuskTestCase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Laravel\Dusk\Browser;
 
 class ExampleTest extends DuskTestCase
 {
 
-    use DatabaseTransactions;
+    use DatabaseMigrations;
 
     /**
      * A basic test example.
@@ -23,18 +25,5 @@ class ExampleTest extends DuskTestCase
         $response->assertStatus(200);
     }
 
-    public function testBasicVisit()
-    {
 
-        $user = factory(User::class)->create( [
-            'name' => 'Megatron',
-            'email' => 'megatron@manateesoft.com',
-        ]);
-
-        $this->actingAs($user,'api')
-            ->get('api/user')
-            ->assertSee('Megatron')
-            ->assertSee('megatron@manateesoft.com');
-
-    }
 }
