@@ -11,17 +11,17 @@
 |
 */
 
-use App\Posts;
+use App\Post;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['uses' => 'PostController@index' ,
+    'as' => 'posts.index'
+]);
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('posts/{post}', [
+Route::get('posts/{post}-{slug}', [
     'as' => 'posts.show',
     'uses' => 'PostController@show'
 ])->where('post','\d+');

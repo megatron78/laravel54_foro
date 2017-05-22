@@ -2,6 +2,7 @@
 
 namespace Tests\Browser;
 
+use App\Post;
 use App\User;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
@@ -40,6 +41,14 @@ class CreatePostsTest extends DuskTestCase
                 'content' => $this->content,
                 'pending' => true,
                 'user_id' => $user->id,
+            ]);
+
+            $post = Post::first();
+
+            //Test the author is subscribed automatically to the post.
+            $this->assertDatabaseHas('subscriptions', [
+                'user_id' => $user->id,
+                'post_id' => $post->id,
             ]);
 
             //Test user is redirected to details page

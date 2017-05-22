@@ -1,7 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Mauricio Molina
- * Date: 2017-05-11
- * Time: 10:16
- */
+
+Route::get('register2', [
+    'uses' => 'RegisterController2@create',
+    'as' => 'register2'
+]);
+
+Route::post('register2', [
+    'uses' => 'RegisterController2@store',
+]);
