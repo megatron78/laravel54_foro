@@ -22,7 +22,8 @@ class ShowPostTest extends TestCase
     {
         //Having
         $user = factory(User::class)->create([
-            'name' => 'Megatron',
+            'first_name' => 'Megatron',
+            'last_name' => 'Molina',
         ]);
 
         $post = factory(Post::class)->create([

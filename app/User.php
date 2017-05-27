@@ -24,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'username', 'first_name', 'last_name',
     ];
 
     /**
@@ -89,5 +89,9 @@ class User extends Authenticatable
 
     public function isSubscribedTo(Post $post) {
         return $this->subscriptions()->where('post_id', $post->id)->count() > 0;
+    }
+
+    public function getNameAttribute() {
+        return "{$this->first_name} {$this->lastName}";
     }
 }
