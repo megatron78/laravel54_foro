@@ -34,7 +34,7 @@ class TokenMailTest extends DuskTestCase
 
         $message = $transport->messages()->first();
 
-        dd($message->getBody());
+        $this->assertTrue(true);
 
     }
 }
